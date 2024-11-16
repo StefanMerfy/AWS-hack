@@ -1,0 +1,19 @@
+body {
+    background-color: white;
+    grid-template-columns: repeat(1);
+    display: grid;
+    margin: auto;
+}
+p {
+    color: blue;
+}
+h1 {
+    text-align: center;
+    color: red;
+}
+.ui {
+    background-color: red;
+}
+.map {
+    background-color: gold;
+}
