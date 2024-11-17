@@ -81,7 +81,8 @@ function calculateRoute() {
             const path = result.routes[0].overview_path;
 
             // Place markers every 40 miles along the route
-            placeMarkersAtIntervals(path, 150, map);
+            var range = document.getElementById("range").value;
+            placeMarkersAtIntervals(path, range, map);
         } else {
             alert("Could not calculate route: " + status);
         }
@@ -144,7 +145,10 @@ function placeMarkersAtIntervals(path, markerIntervalMiles, map) {
             const markerLatLng = google.maps.geometry.spherical.interpolate(startLatLng, endLatLng, fraction);
 
             // Search for nearby gas stations or charging stations
-            searchNearbyPlaces(markerLatLng, map, 'gas_station'); // types we would implement based on input 'gas_station', 'charging_station', etc.
+            var fuel = document.getElementById("fuelType").value;
+            console.log(fuel);
+
+            searchNearbyPlaces(markerLatLng, map, fuel); // types we would implement based on input 'gas_station', 'charging_station', etc.
 
             markerCount++;
         }

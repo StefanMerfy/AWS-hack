@@ -8,6 +8,15 @@
 <!-- start and end destination -->
 <p>Start Address: <input id="start" type="text" placeholder="Enter start address" value="Los Angeles, CA"></p>
 <p>End Address:   <input id="end" type="text" placeholder="Enter destination address" value="San Francisco, CA"></p>
+<p>Enter Vehicle Range(miles):   <input id="range" type="text" placeholder="Enter vehicle range" value="300"></p>
+
+<p>Select Fuel Type:
+    <select id="fuelType">
+      <option value="gas_station">Gas Station</option>
+      <option value="electric_vehicle_charging_station">Electric Vehicle Charging Station</option>
+    </select>
+  </p>
+
 
 <!-- submit button -->
 <button onclick="calculateRoute()">Get Route</button>
@@ -20,7 +29,7 @@
 <div id="exportLink"></div>
 
 <!-- load google maps api -->
-<script src="https://maps.googleapis.com/maps/api/js?key=API KEY HERE&libraries=places&callback=myMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=API KEY&libraries=places&callback=myMap" async defer></script>
 
 <!-- link to js file -->
 <script src="map.js"></script>
