@@ -6,7 +6,9 @@ var autocompleteEnd;
 var placesService;
 var waypoints = [];
 var markers = []; // Array to store markers
-var passMarkers = [];
+var latlist = [];
+var lnglist = [];
+var listofLocs = [];
 
 function myMap() {
     var mapProp = {
@@ -79,6 +81,7 @@ function resetMap() {
     });
     markers = []; // Reset markers array
     passMarkers = [];
+    listofLocs = [];
 
     // Clear the waypoints
     waypoints = [];
@@ -149,7 +152,7 @@ function generateExportLink(start, end) {
 
 }
 
-function placeMarkersAtIntervals(path, markerIntervalMiles, map) {
+function placeMarkersAtIntervals(path, markerIntervalMiles, map, redo) {
     const mileInMeters = 1609.34;
     const markerIntervalMeters = markerIntervalMiles * mileInMeters;
 
@@ -167,22 +170,22 @@ function placeMarkersAtIntervals(path, markerIntervalMiles, map) {
         while (distanceTraveled >= (markerCount + 1) * markerIntervalMeters) {
             const fraction = (markerCount + 1) * markerIntervalMeters / distanceTraveled;
             const markerLatLng = google.maps.geometry.spherical.interpolate(startLatLng, endLatLng, fraction);
+            listofLocs.push(markerLatLng);
 
             // Search for nearby gas stations or charging stations
             var fuel = document.getElementById("fuelType").value;
             
-            const lat = markerLatLng.lat();  // Returns the latitude
-            const lng = markerLatLng.lng();  // Returns the longitude
+            const lat = parseInt(markerLatLng.lat());  // Returns the latitude
+            const lng = parseInt(markerLatLng.lng());  // Returns the longitude
 
-            const coords = {lat,lng};
 
-            if(fuel == "gas_station"){
-                searchNearbyPlaces(markerLatLng, map, fuel, coords);
-            }
+            
+            searchNearbyPlaces(markerLatLng, map, fuel);
+    
              // types we would implement based on input 'gas_station', 'charging_station', etc.
             
-            passMarkers.push(coords);
-
+            latlist.push(lat);
+            lnglist.push(lng);
             markerCount++;
         }
     }
@@ -191,17 +194,85 @@ function placeMarkersAtIntervals(path, markerIntervalMiles, map) {
 
         searchChargers(passMarkers,map);
 
+
     }
 
 }
 
-function searchChargers(markerarray,map){
+function searchChargers(latlist, lnglist,map){
 
-        console.log(markerarray);
+        //console.log(markerarray);
+
+        // URL 
+        fetch('http://44.223.51.208/post_waypoints/', {
+  method: 'POST', // HTTP method
+  headers: {
+    'Content-Type': 'application/json', // Indicates the data being sent is in JSON format
+  },
+  body: {
+    "count": 4,
+    "list_lat": latlist,
+    "list_long": lnglist,}
+})
+  .then(response => response.json()) // Parse the response as JSON
+  .then(responseData => {
+    console.log('Server response:', responseData);
+    responseData.forEach(element => {
+        var loc = element.updated_waypoints;
+        const waypoint = {
+            location:loc,
+            stopover:true
+        };
+        waypoints.push(waypoint);
+
+        // Create a marker for the gas station on the map
+        const marker = new google.maps.Marker({
+            position: loc,
+            map: map,
+            title: closestStation.name,
+        });
+
+        // Store the marker for later removal
+        markers.push(marker);
+
+    });
+    recalculateRoute();
+  })
+  .catch(error => {
+    console.error('Error during the request:', error);
+    /*listofLocs.forEach(element => {
+        searchNearbyPlaces(element, map, "gas_station");
+    });*/
+
+  });
+
+
+/*
+        if(data){
+        const waypoint = {
+            location: closestStation.geometry.location,
+            stopover: true,  // Mark as a stopover (waypoint) in the route
+        };
+        waypoints.push(waypoint); // Add the waypoint to the global waypoints array
+
+        // Create a marker for the gas station on the map
+        const marker = new google.maps.Marker({
+            position: closestStation.geometry.location,
+            map: map,
+            title: closestStation.name,
+        });
+
+        // Store the marker for later removal
+        markers.push(marker);
+    }
+
+    recalculateRoute();
+*/
+
 
 }
 
-function searchNearbyPlaces(location, map, locationtype, coords) {
+function searchNearbyPlaces(location, map, locationtype) {
     const request = {
         location: location,
         radius: 20000, // Search within a 20km radius
