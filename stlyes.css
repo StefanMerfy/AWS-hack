@@ -17,8 +17,8 @@
 
 .logo img{
     width:33%;
-    height: 10%;
-    overflow: visible;
+    height: 2%;
+    overflow: hidden;
 }
 
 body{
@@ -55,7 +55,8 @@ img {
 .navbar {
     background-color: var(--primary-color);
     color: #fff;
-    height: 200px;
+    height: 188px;
+    overflow: auto;
 }
 
 .navbar ul{
@@ -436,3 +437,22 @@ select {
     font-weight: bold;
 }
 
+.map-container {
+    display: flex;           /* Enables flexbox */
+    flex-direction: column;  /* Stacks content vertically */
+    align-items: center;     /* Horizontally centers child elements */
+    justify-content: center; /* Vertically centers within the container if necessary */
+    margin: 20px auto;       /* Centers the container itself horizontally */
+    text-align: center;      /* Ensures text (if any) is centered */
+    width: 100%;             /* Full width of the container */
+    max-width: 800px;        /* Optional: Limits container's width for better visuals */
+}
+
+#googleMap {
+    width: 100%;             /* Dynamic full-width responsiveness */
+    max-width: 800px;        /* Restricts the map to a maximum width */
+    height: 400px;           /* Sets a fixed height for the map */
+    border: 1px solid #ccc;  /* Adds a border for visibility (optional) */
+    border-radius: 8px;      /* Adds rounded corners (optional) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better visuals */
+}
