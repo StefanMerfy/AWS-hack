@@ -11,11 +11,11 @@
     <!-- Navbar-->
     <div class = "navbar">
         <div class="container flex">
-            <h1 class = "logo"> FuelWise</h1>
+            <h1 class="logo"><img src="file.png"></img></h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="features.html">Features</a></li>
                 </ul>
             </nav>
@@ -30,21 +30,48 @@
                 <a href="features.html" class="btn btn-outline">Read more</a>
             </div>
             <div class="showcase-form card">
-                <h2>Request a tour</h2>
+                <h2>Find a Trip</h2>
                 <form>
                     <div class="form-control">
-                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="text" name="starting" placeholder="Starting location" required>
                     </div>
                     <div class="form-control">
-                        <input type="text" name="company" placeholder="Company Name" required>
+                        <input type="text" name="ending" placeholder="Ending location" required>
                     </div>
                     <div class="form-control">
-                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="text" name="car" placeholder="Type of Car" required>
                     </div>
                     <input type="submit" value="Send" class="btn btn-primary">
                 </form>
             </div>
         </div>
      </section>
+     <!--Stats-->
+     <section class="stats">
+        <div class="container">
+            <h3 class="stats-heading text-center my-1">
+                Welcome to the most sustainable platform for planning journeys with the environment in mind
+            </h3>
+
+            <div class="grid grid-3 text-center my-4">
+                <div>
+                    <i class="fas fa-server fa-3x"></i>
+                    <h3>10,349,405</h3>
+                    <p class="text-secondary">Deployments</p>
+                </div>
+                <div>
+                    <i class="fas fa-upload fa-3x"></i>
+                    <h3>987TB</h3>
+                    <p class="text-secondary">Published</p>
+                </div>
+                <div>
+                    <i class="fas fa-project-diagram fa-3x"></i>
+                    <h3>2,343,265</h3>
+                    <p class="text-secondary">Projects</p>
+                </div>
+            </div>
+        </div>
+     </section>
+     
 </body>
 </html>
