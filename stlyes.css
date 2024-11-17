@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900');
 
@@ -466,5 +467,26 @@ select {
     color: rgb(20, 146, 22);
     font-size: 36px;
     text-decoration: underline;
+}
+
+
+body {
+    background-color: white;
+    grid-template-columns: repeat(1);
+    display: grid;
+    margin: auto;
+}
+p {
+    color: blue;
+}
+h1 {
+    text-align: center;
+    color: red;
+}
+.ui {
+    background-color: red;
+}
+.map {
+    background-color: gold;
 }
 
