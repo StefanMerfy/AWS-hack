@@ -2,8 +2,24 @@
 <html>
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+<h1>Fuelwise!!</h1>
+<p>Enter addresses to display a route:</p>
+
+<!-- start and end destination -->
+<p>Start Address: <input id="start" type="text" placeholder="Enter start address" value="Los Angeles, CA"></p>
+<p>End Address:   <input id="end" type="text" placeholder="Enter destination address" value="San Francisco, CA"></p>
+
+<!-- submit button -->
+<button onclick="calculateRoute()">Get Route</button>
+
+<!-- map container -->
+<div id="googleMap" style="width:600px;height:600px;"></div>
+
+<!-- load google maps api -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl09UFP5gdgv8PM6Is2nDWnGl8K_EZYOY&libraries=places&callback=myMap" async defer></script>
+
+<!-- link to js file -->
+<script src="map.js"></script>
 
 </body>
 </html>
