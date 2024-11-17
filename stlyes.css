@@ -1,3 +1,475 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900');
+
+:root {
+  --text-color: hsla(210, 50%, 85%, 1);
+  --shadow-color: hsla(210, 40%, 52%, .4);
+  --btn-color: green;
+  --bg-color: #141218;
+  --primary-color: green;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.logo img{
+    width:33%;
+    height: 2%;
+    overflow: hidden;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+h1, h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+img {
+    width:100%
+}
+
+/*Navbar */
+
+.navbar {
+    background-color: var(--primary-color);
+    color: #fff;
+    height: 188px;
+    overflow: auto;
+}
+
+.navbar ul{
+    display: flex;
+}
+
+.navbar a{
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.navbar a:hover{
+    border-bottom: 2px #fff solid;
+} 
+
+.navbar .flex{
+    justify-content: space-between;
+}
+
+/*Showcase*/
+.showcase {
+    height: 400px;
+    background-color: var(--primary-color);
+    color: white;
+    position: relative;
+}
+
+.showcase h1{
+    font-size: 40px;
+}
+
+.showcase p{
+    margin: 20px 0;
+}
+
+.showcase .grid{
+    overflow: visible;
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+}
+
+.showcase-form{
+    position: relative;
+    top: 60px;
+    height: 400px;
+    width: 400px;
+    padding: 40px;
+    z-index: 100;
+}
+.showcase-form .form-control{
+    margin: 30px 0;
+}
+.showcase-form input[type='text'],
+.showcase-form input[type='email']{
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.showcase-form input:focus {
+    outline: none;
+}
+
+.showcase::before,
+.showcase::after{
+    content: '';
+    position: absolute;
+    height: 100px;
+    bottom: -70px;
+    right: 0;
+    left: 0;
+    background: #fff;
+    transform: skewY(-3deg);
+    -webkit-transform: skewY(-3deg);
+    -moz-transform: skewY(-3deg);
+    -ms-transform: skewY(-3deg);
+}
+/* Stats */
+.stats {
+    padding-top: 100px;
+}
+
+/* Utilities */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 40px;
+    align-items: center;
+}
+
+.card{
+    background-color: white;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    margin: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.btn-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-center:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+.btn-outline{
+    background-color: transparent;
+    border: 1px #fff solid;
+}
+
+
+select {
+    padding: 10px 5px;         /* Padding for dropdown */
+    font-size: 16px;            /* Text size */
+    border: 2px solid #ccc;     /* Border for dropdown */
+    border-radius: 5px;         /* Rounded corners */
+    background-color: #f9f9f9;  /* Light background */
+    color: #333;                /* Text color */
+    cursor: pointer;            /* Pointer cursor */
+    transition: border-color 0.3s ease; /* Smooth border transition */
+  }
+  select:hover {
+    border-color: var(--primary-color);      /* Green border on hover */
+  }
+
+  select:focus {
+    outline: none;              /* Remove default focus outline */
+    border-color: var(--primary-color);      /* Green border on focus */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Subtle glow */
+  }
+  /* Style the button */
+  button {
+    position:relative;
+    padding: 10px 20px;  
+    border: none;
+    background: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-family: "Source Code Pro";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 16px;  
+    color: var(--text-color);
+    background-color: var(--btn-color);
+    box-shadow: var(--shadow-color) 2px 2px 22px;
+    border-radius: 4px; 
+    z-index: 0;  
+    overflow: hidden;
+    display: flex;   
+  }
+  
+  button:focus {
+    outline-color: transparent;
+    box-shadow: var(--btn-color) 2px 2px 22px;
+  }
+  
+  .right::after, button::after {
+    content: var(--content);
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    padding: 40px 40px;
+    pointer-events:none;
+  }
+  
+  button::after{
+    font-weight: 200;
+    top: -30px;
+    left: -20px;
+  } 
+  
+  .right, .left {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+  .right {
+    left: 66%;
+  }
+  .left {
+    right: 66%;
+  }
+  .right::after {
+    top: -30px;
+    left: calc(-66% - 20px);
+    
+    background-color: var(--bg-color);
+    color:transparent;
+    transition: transform .4s ease-out;
+    transform: translate(0, -90%) rotate(0deg)
+  }
+  
+  button:hover .right::after {
+    transform: translate(0, -47%) rotate(0deg)
+  }
+  
+  button .right:hover::after {
+    transform: translate(0, -50%) rotate(-7deg)
+  }
+  
+  button .left:hover ~ .right::after {
+    transform: translate(0, -50%) rotate(7deg)
+  }
+  
+  /* bubbles */
+  button::before {
+    content: '';
+    pointer-events: none;
+    opacity: .6;
+    background:
+      radial-gradient(circle at 20% 35%,  transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+      radial-gradient(circle at 75% 44%, transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+      radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px);
+  
+    width: 100%;
+    height: 300%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    animation: bubbles 5s linear infinite both;
+  }
+  
+  @keyframes bubbles {
+    from {
+      transform: translate();
+    }
+    to {
+      transform: translate(0, -66.666%);
+    }
+  }
+.btn:hover {
+    transform: scale(0.98) ;
+}
+.text-center{
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid-3{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/*Margin*/
+.my-1{
+    margin: 1rem 0;
+}
+
+.my-2{
+    margin: 1.5rem 0;
+}
+
+.my-3{
+    margin: 2rem 0;
+}
+
+.my-4{
+    margin: 3rem 0;
+}
+
+.my-5{
+    margin: 4rem 0;
+}
+
+
+.m-1{
+    margin: 1rem ;
+}
+
+.m-2{
+    margin: 1.5rem ;
+}
+
+.m-3{
+    margin: 2rem ;
+}
+
+.m-4{
+    margin: 3rem ;
+}
+
+.m-5{
+    margin: 4rem ;
+}
+
+/* Padding*/
+.py-1{
+    padding: 1rem 0;
+}
+
+.py-2{
+    padding: 1.5rem 0;
+}
+
+.py-3{
+    padding: 2rem 0;
+}
+
+.py-4{
+    padding: 3rem 0;
+}
+
+.py-5{
+    padding: 4rem 0;
+}
+
+.p-1{
+    padding: 1rem ;
+}
+
+.p-2{
+    padding: 1.5rem ;
+}
+
+.p-3{
+    padding: 2rem ;
+}
+
+.p-4{
+    padding: 3rem ;
+}
+
+.p-5{
+    padding: 4rem ;
+}
+
+
+.stats-heading {
+    max-width: 500px;
+    margin: auto;
+}
+
+.stats .grid h3{
+    font-size: 35px;
+}
+.stats .grid p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.map-container {
+    display: flex;           /* Enables flexbox */
+    flex-direction: column;  /* Stacks content vertically */
+    align-items: center;     /* Horizontally centers child elements */
+    justify-content: center; /* Vertically centers within the container if necessary */
+    margin: 20px auto;       /* Centers the container itself horizontally */
+    text-align: center;      /* Ensures text (if any) is centered */
+    width: 100%;             /* Full width of the container */
+    max-width: 800px;        /* Optional: Limits container's width for better visuals */
+}
+
+#googleMap {
+    width: 100%;             /* Dynamic full-width responsiveness */
+    max-width: 800px;        /* Restricts the map to a maximum width */
+    height: 400px;           /* Sets a fixed height for the map */
+    border: 1px solid #ccc;  /* Adds a border for visibility (optional) */
+    border-radius: 8px;      /* Adds rounded corners (optional) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better visuals */
+}
+.google-maps-link {
+    color: rgb(68, 68, 68);
+    font-size: 36px;
+    text-decoration: underline;
+}
+
+.google-maps-link:hover {
+    color: rgb(20, 146, 22);
+    font-size: 36px;
+    text-decoration: underline;
+}
+
+
 body {
     background-color: white;
     grid-template-columns: repeat(1);
@@ -17,3 +489,4 @@ h1 {
 .map {
     background-color: gold;
 }
+
