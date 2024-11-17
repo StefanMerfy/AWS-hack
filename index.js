@@ -6,6 +6,7 @@ var autocompleteEnd;
 var placesService;
 var waypoints = [];
 var markers = []; // Array to store markers
+var passMarkers = [];
 
 function myMap() {
     var mapProp = {
@@ -57,7 +58,7 @@ function handleButtonClick() {
     var map = document.getElementById("googleMap");
     map.style.width = "600px";
     map.style.height = "600px";         
-    scrollToElement('exportLink');   
+    scrollToElement('googleMap');   
     
 
 }
@@ -77,6 +78,7 @@ function resetMap() {
         marker.setMap(null); // Remove marker from the map
     });
     markers = []; // Reset markers array
+    passMarkers = [];
 
     // Clear the waypoints
     waypoints = [];
@@ -143,7 +145,8 @@ function generateExportLink(start, end) {
 
     // Display the link
     console.log("Export URL: " + url);
-    document.getElementById('exportLink').innerHTML = "<a href='" + url + "' target='_blank'>Open Route in Google Maps</a>";
+    document.getElementById('exportLink').innerHTML = "<a href='" + url + "' target='_blank' class='google-maps-link'> ->Open Route in Google Maps <- </a>";
+
 }
 
 function placeMarkersAtIntervals(path, markerIntervalMiles, map) {
@@ -167,16 +170,38 @@ function placeMarkersAtIntervals(path, markerIntervalMiles, map) {
 
             // Search for nearby gas stations or charging stations
             var fuel = document.getElementById("fuelType").value;
-            console.log(fuel);
+            
+            const lat = markerLatLng.lat();  // Returns the latitude
+            const lng = markerLatLng.lng();  // Returns the longitude
 
-            searchNearbyPlaces(markerLatLng, map, fuel); // types we would implement based on input 'gas_station', 'charging_station', etc.
+            const coords = {lat,lng};
+
+            if(fuel == "gas_station"){
+                searchNearbyPlaces(markerLatLng, map, fuel, coords);
+            }
+             // types we would implement based on input 'gas_station', 'charging_station', etc.
+            
+            passMarkers.push(coords);
 
             markerCount++;
         }
     }
+
+    if(fuel == "electric_vehicle_charging_station"){
+
+        searchChargers(passMarkers,map);
+
+    }
+
 }
 
-function searchNearbyPlaces(location, map, locationtype) {
+function searchChargers(markerarray,map){
+
+        console.log(markerarray);
+
+}
+
+function searchNearbyPlaces(location, map, locationtype, coords) {
     const request = {
         location: location,
         radius: 20000, // Search within a 20km radius

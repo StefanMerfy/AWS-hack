@@ -456,3 +456,15 @@ select {
     border-radius: 8px;      /* Adds rounded corners (optional) */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better visuals */
 }
+.google-maps-link {
+    color: rgb(68, 68, 68);
+    font-size: 36px;
+    text-decoration: underline;
+}
+
+.google-maps-link:hover {
+    color: rgb(20, 146, 22);
+    font-size: 36px;
+    text-decoration: underline;
+}
+
