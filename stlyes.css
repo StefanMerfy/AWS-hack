@@ -11,8 +11,8 @@
 }
 
 .logo img{
-    width: 17%;
-    height: 17%;
+    width:33%;
+    height: 10%;
     overflow: visible;
 }
 
@@ -50,7 +50,7 @@ img {
 .navbar {
     background-color: var(--primary-color);
     color: #fff;
-    height: 180px;
+    height: 200px;
 }
 
 .navbar ul{
