@@ -25,7 +25,7 @@
     <section class="showcase">
         <div class="container grid">
             <div class="showcase-text">
-                <h1>Better Fuel for You</h1>
+                <h1><b>Better Fuel for You<b\></h1>
                 <p>We make accessing fuel on long distance trips much easier, user efficient, and more eco friendly </p>
                 <a href="features.html" class="btn btn-outline">Read more</a>
             </div>
@@ -33,15 +33,22 @@
                 <h2>Find a Trip</h2>
                 <form>
                     <div class="form-control">
-                        <input type="text" name="starting" placeholder="Starting location" required>
+                        <input type="text" id="start" placeholder="Starting location" required>
                     </div>
                     <div class="form-control">
-                        <input type="text" name="ending" placeholder="Ending location" required>
+                        <input type="text" id="end" placeholder="Ending location" required>
                     </div>
                     <div class="form-control">
-                        <input type="text" name="car" placeholder="Type of Car" required>
+                        <input type="text" id="range" placeholder="Vehicle Range (miles)" required>
                     </div>
-                    <input type="submit" value="Send" class="btn btn-primary">
+                    
+                    <select id="fuelType">
+                        <option value="gas_station">Gas Station</option>
+                        <option value="electric_vehicle_charging_station">Electric Vehicle Charging Station</option>
+                      </select>
+                    
+                      <button type="button" onclick="handleButtonClick()">Get Route</button>
+
                 </form>
             </div>
         </div>
@@ -56,22 +63,27 @@
             <div class="grid grid-3 text-center my-4">
                 <div>
                     <i class="fas fa-server fa-3x"></i>
-                    <h3>10,349,405</h3>
-                    <p class="text-secondary">Deployments</p>
+                    <h3>196,643</h3>
+                    <p class="text-secondary">U.S Gas Stations</p>
                 </div>
                 <div>
                     <i class="fas fa-upload fa-3x"></i>
-                    <h3>987TB</h3>
-                    <p class="text-secondary">Published</p>
+                    <h3>183,000</h3>
+                    <p class="text-secondary">Public EV Chargers</p>
                 </div>
                 <div>
                     <i class="fas fa-project-diagram fa-3x"></i>
-                    <h3>2,343,265</h3>
-                    <p class="text-secondary">Projects</p>
+                    <h3>Unlimited</h3>
+                    <p class="text-secondary">Destinations</p>
                 </div>
             </div>
         </div>
      </section>
-     
+
+     <div id="exportLink"></div>
+     <div id="googleMap" style="width:0px;height:0px;"></div>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl09UFP5gdgv8PM6Is2nDWnGl8K_EZYOY&libraries=places&callback=myMap" async defer></script>
+     <script src="index.js"></script>
+
 </body>
 </html>
