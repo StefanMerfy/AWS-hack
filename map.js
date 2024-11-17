@@ -1,9 +1,15 @@
+
+require('dotenv').config();
+
+
 var map;
 var directionsService;
 var directionsRenderer;
 var autocompleteStart;
 var autocompleteEnd;
 var placesService;
+const apiKey = process.env.API_KEY;
+
 
 function myMap() {
     var mapProp = {
